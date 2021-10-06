@@ -33,7 +33,7 @@ function App() {
       setjobId("");
       setStats("");
       setOutput("");
-      const { data } = await axios.post("http://code.avinash-sharma.com/", payload);
+      const { data } = await axios.post("http://code.avinash-sharma.com/run", payload);
       setjobId(data.jobId);
       let intervalId;
       intervalId = setInterval(async () => {
