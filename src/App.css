@@ -1,0 +1,68 @@
+.main > h1 {
+  text-align: center;
+}
+.language {
+  text-align: center;
+  padding: 4px;
+  margin: 5px;
+}
+.codeEditor {
+  margin: auto;
+  justify-content: center;
+  max-width: 50%;
+}
+
+.inout {
+  display: flex;
+  justify-content: center;
+}
+
+.inout > div > h3 {
+  text-align: center;
+}
+.submit {
+  display: flex;
+  justify-content: center;
+}
+.btn {
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 2px;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  cursor: pointer;
+}
+.btn-primary {
+  font-size: 16px;
+  background-color: #4caf50; /* Green */
+}
+.btn-set {
+  background-color: #6c6c6c; /* Green */
+}
+.btn-primary:hover {
+  background-color: #3f8a42; /* Green */
+  color: white;
+}
+.custom-select {
+  position: relative;
+  font-family: Arial;
+  margin: 10px;
+  padding: 4px;
+}
+.custom-select select {
+  display: none; /*hide original SELECT element: */
+}
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}

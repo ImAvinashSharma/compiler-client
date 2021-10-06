@@ -33,7 +33,7 @@ function App() {
       setjobId("");
       setStats("");
       setOutput("");
-      const { data } = await axios.post("http://localhost:8080/run", payload);
+      const { data } = await axios.post("http://code.avinash-sharma.com/", payload);
       setjobId(data.jobId);
       let intervalId;
       intervalId = setInterval(async () => {
@@ -78,11 +78,13 @@ function App() {
     return result;
   };
   return (
-    <div className="App">
+    <div className="main">
       <h1>Online Code Compiler</h1>
-      <div>
+      <div className="language">
         <i>Language:</i>
         <select
+          className="custom-select"
+          style={{ width: "80px" }}
           value={language}
           onChange={e => {
             let shouldSwitch = window.confirm("Are you sure you want to change language? WARNING: Your current code will be lost.");
@@ -95,30 +97,39 @@ function App() {
           <option value="c">C</option>
           <option value="py">Python</option>
         </select>
+        <button className="btn btn-set" onClick={setDefaultLanguage}>
+          Set Default
+        </button>
       </div>
-      <br />
-      <div>
-        <button onClick={setDefaultLanguage}>Set Default</button>
-      </div>
-      <br />
       <div className="codeEditor">
         <Editor language={language} value={code} onChange={setCode} />
       </div>
       <br />
-      <textarea
-        rows="8"
-        cols="25"
-        value={input}
-        onChange={e => {
-          setInput(e.target.value);
-        }}
-      ></textarea>
-      <br />
-      <p>{output}</p>
-      <p>{jobId && `JobId ${jobId}`}</p>
-      <p>{renderTimeDetails()}</p>
-      <p>{status}</p>
-      <button onClick={handleSubmit}>Submit</button>
+      <div className="inout">
+        <div>
+          <h3>Input</h3>
+          <textarea
+            rows="8"
+            cols="25"
+            value={input}
+            onChange={e => {
+              setInput(e.target.value);
+            }}
+          ></textarea>
+        </div>
+        <div>
+          {output && <h3>Output</h3>}
+          <p>{output}</p>
+          <p>{jobId && `JobId ${jobId}`}</p>
+          <p>{renderTimeDetails()}</p>
+          <p>{status}</p>
+        </div>
+      </div>
+      <div className="submit">
+        <button className="btn btn-primary" onClick={handleSubmit}>
+          Submit
+        </button>
+      </div>
     </div>
   );
 }

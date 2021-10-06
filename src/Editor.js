@@ -3,6 +3,17 @@ import "codemirror/lib/codemirror.css";
 import "codemirror/theme/monokai.css";
 import "codemirror/mode/python/python";
 import "codemirror/mode/clike/clike";
+import "codemirror/addon/edit/closebrackets";
+import "codemirror/addon/edit/closetag";
+import "codemirror/addon/fold/foldcode";
+import "codemirror/addon/hint/show-hint.css";
+import "codemirror/addon/hint/show-hint.js";
+import "codemirror/addon/hint/show-hint";
+import "codemirror/addon/lint/lint";
+import "codemirror/addon/display/autorefresh";
+
+// import "codemirror/addon/hint/python-hint";
+
 import { Controlled as CodeMirror } from "react-codemirror2";
 
 function Editor(props) {
@@ -23,6 +34,7 @@ function Editor(props) {
   }
   const handleChange = (editor, data, value) => {
     onChange(value);
+    editor.showHint({ completeSingle: false });
   };
   return (
     <div>
@@ -30,12 +42,22 @@ function Editor(props) {
         value={value}
         onBeforeChange={handleChange}
         options={{
+          tabSize: 4,
           lineWrapping: true,
           lint: true,
           mode: language,
           theme: "monokai",
+          fixedGutter: true,
+          foldGutter: true,
           lineNumbers: true,
-          smartIndent: true
+          autoCloseTags: true,
+          autoCloseBrackets: true,
+          matchBrackets: true,
+          smartIndent: true,
+          extraKeys: {
+            "Ctrl-Space": "autocomplete"
+          },
+          autoRefresh: true
         }}
       />
     </div>
