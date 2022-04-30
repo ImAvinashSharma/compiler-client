@@ -34,6 +34,7 @@ function App() {
       setStats("");
       setOutput("");
       const { data } = await axios.post("http://3.110.132.235/run", payload);
+      console.log(data);
       setjobId(data.jobId);
       let intervalId;
       intervalId = setInterval(async () => {
