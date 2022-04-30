@@ -33,11 +33,11 @@ function App() {
       setjobId("");
       setStats("");
       setOutput("");
-      const { data } = await axios.post("http://localhost:8080/run", payload);
+      const { data } = await axios.post("http://3.110.132.235/run", payload);
       setjobId(data.jobId);
       let intervalId;
       intervalId = setInterval(async () => {
-        const { data: dataRes } = await axios.get("http://localhost:8080/status", { params: { id: data.jobId } });
+        const { data: dataRes } = await axios.get("http://3.110.132.235/status", { params: { id: data.jobId } });
         const { success, job, error } = dataRes;
         if (success) {
           const { status: jobStatus, output: jobOutput } = job;
@@ -120,7 +120,7 @@ function App() {
         <div>
           {output && <h3>Output</h3>}
           <p>{output}</p>
-          <p>{jobId && `JobId ${jobId}`}</p>
+          <p>{jobId && `Job Id ${jobId}`}</p>
           <p>{renderTimeDetails()}</p>
           <p>{status}</p>
         </div>
